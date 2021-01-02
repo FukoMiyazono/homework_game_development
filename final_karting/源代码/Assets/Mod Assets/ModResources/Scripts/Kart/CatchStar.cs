@@ -28,7 +28,6 @@ public class CatchStar : TargetObject
         GameManager.GetComponent<GameFlowManager>().starcount += 1;
         Text.GetComponent<TMP_Text>().text = ""+GameManager.GetComponent<GameFlowManager>().starcount+" / "+totalstar;
 
-
         if (spawnPrefabOnPickup)
         {
             var vfx = Instantiate(spawnPrefabOnPickup, CollectVFXSpawnPoint.position, Quaternion.identity);

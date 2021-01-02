@@ -9,6 +9,7 @@ public class SimpleTrigger : MonoBehaviour
 
     public Rigidbody triggerBody; 
     public UnityEvent onTriggerEnter;
+    public UnityEvent onTriggerExit;
     public bool isgoal;
     ObjectiveManager m_ObjectiveManager;
 
@@ -25,6 +26,19 @@ public class SimpleTrigger : MonoBehaviour
 
         if (hitRb == triggerBody){
             onTriggerEnter.Invoke();
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        //do not trigger if there's no trigger target object
+        if (triggerBody == null) return;
+        //only trigger if the triggerBody matches
+        var hitRb = other.attachedRigidbody;
+
+        if (hitRb == triggerBody)
+        {
+            onTriggerExit.Invoke();
         }
     }
 
